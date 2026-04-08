@@ -1,0 +1,10 @@
+# Requirements for Krypto Project
+# 
+# Core cryptographic library
+cryptography>=41.0.0
+
+# CrewAI and LLM integration
+crewai>=0.86.0
+langchain-openai>=0.2.0
+python-dotenv>=1.0.0
+

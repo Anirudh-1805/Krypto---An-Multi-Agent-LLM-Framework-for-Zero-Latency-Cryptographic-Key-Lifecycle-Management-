@@ -1,0 +1,50 @@
+[
+  {
+    "name": "rotate_old_keys",
+    "condition": {
+      "max_age_days": 90
+    },
+    "action": "rotate_key",
+    "explanation_template": "Key is {key_age_days:.1f} days old, exceeding the {threshold_days} day rotation policy.",
+    "priority": 10
+  },
+  {
+    "name": "rotate_high_usage_keys",
+    "condition": {
+      "max_usage_count": 1000
+    },
+    "action": "rotate_key",
+    "explanation_template": "Key has been used {usage_count} times, exceeding the {threshold} usage threshold.",
+    "priority": 9
+  },
+  {
+    "name": "revoke_failing_keys",
+    "condition": {
+      "max_failure_rate": 0.05
+    },
+    "action": "revoke_key",
+    "explanation_template": "Key has {failure_rate:.1%} failure rate, exceeding the {threshold:.1%} threshold. Key may be compromised.",
+    "priority": 20
+  },
+  {
+    "name": "alert_high_usage_rate",
+    "condition": {
+      "max_usage_rate_per_minute": 10.0
+    },
+    "action": "alert",
+    "explanation_template": "Key usage rate is {usage_rate:.2f} ops/min, exceeding the {threshold} ops/min threshold. Possible abuse detected.",
+    "priority": 5
+  },
+  {
+    "name": "alert_critical_anomalies",
+    "condition": {
+      "has_anomaly_signal": {
+        "severity": "critical"
+      }
+    },
+    "action": "alert",
+    "explanation_template": "Critical anomaly signals detected for this key. Immediate attention required.",
+    "priority": 15
+  }
+]
+
